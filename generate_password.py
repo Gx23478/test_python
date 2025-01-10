@@ -23,7 +23,7 @@ def generate_password(ans2):
         for _ in range(z):
             password.pop()
     
-        print(*password)
+        print(''.join(map(str, password)))
     
 
 
