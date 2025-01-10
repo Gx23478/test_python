@@ -1,15 +1,30 @@
 import random
 
-def generate_password(ans2, chars):
-    password = []
-    for _ in range(ans2):
-        password.append(random.choice(char))
+def generate_password(ans2):
+    for _ in range(ans1):   
+        password = []
+        for _ in range(ans2):
+            rancip = random.randint(0, 9)
+            ranbig = random.randint(0, 25)
+            ransmall = random.randint(0, 25)
+            ranspec = random.randint(0, 12)
+            
+            if n1 == 1:
+                password.append(cipfer[rancip])
+            if n2 == 1:
+                password.append(bigsymbol[ranbig])
+            if n3 == 1:
+                password.append(smallsymbol[ransmall])
+            if n4 == 1:
+                password.append(special[ranspec])
+        
+        z = len(password) - ans2
+        
+        for _ in range(z):
+            password.pop()
     
+        print(*password)
     
-    
-    
-    
-    return password
 
 
 
@@ -24,36 +39,32 @@ ans4 = input('Включать ли прописные буквы "ABCDEFGHIJKLM
 
 ans5 = input('Включать ли строчные буквы "abcdefghijklmnopqrstuvwxyz"?: ')#будут ли строчные буквы в пароле
 
-ans6 = input('Включать ли символы "!#$%&*+-=?@^_?"?: ')#будут ли специальные символы в пароле
+ans6 = input('Включать ли символы "!#$%&*+-=?@^_"?: ')#будут ли специальные символы в пароле
 
-ans7 = input('Исключать ли неоднозначные символы "il1Lo0O"?: ')#будут ли использоваться неоднозначные символы
 
 cipfer = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]  # Массив с цифрами
 bigsymbol = [chr(i) for i in range(ord('A'), ord('Z') + 1)]  # Заглавные буквы
 smallsymbol = [chr(i) for i in range(ord('a'), ord('z') + 1)]  # Строчные буквы
 special = ['!', '#', '$', '%', '&', '*', '+', '-', '=', '?', '@', '^', '_']  # Специальные символы
-ambisymbol = ['i', 'l', '1', 'L', 'o', '0', 'O']  # Неоднозначные символы
 
-i = 0
+n1 = 0
+n2 = 0
+n3 = 0
+n4 = 0
 
-char = []
 
 if ans3.lower() == 'да':
-    char += cipfer
+    n1 = 1
 
 if ans4.lower() == 'да':
-    char += bigsymbol
+    n2 = 1
 
 if ans5.lower() == 'да':
-    char += smallsymbol
+    n3 = 1
 
 if ans6.lower() == 'да':
-    char += special
+    n4 = 1
 
-# Исключение неоднозначных символов
-if ans7.lower() == 'да':
-    char = [c for c in char if c not in ambisymbol]
-    
-print(generate_password(ans2, char))
+generate_password(ans2)
 
 
